@@ -75,3 +75,26 @@ def eb_deploy():
     """
     with virtualenv():
         local('eb deploy')
+
+
+@task
+def eb_terminate(name):
+    """
+    Terminates an Elastic Beanstalk environment
+    """
+    with virtualenv():
+        local('eb terminate {0}'.format(name))
+
+
+@task
+def eb_scale(number, name=None):
+    """
+    Changes the number of running instances
+    """
+    cmd = 'eb scale {0}'.format(number)
+
+    if name is not None:
+        cmd += ' ' + name
+
+    with virtualenv():
+        local(cmd)
