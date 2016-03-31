@@ -1,0 +1,40 @@
+import os
+
+from contextlib import contextmanager
+
+from fabric.api import task, local, prefix
+
+CURRENT_PATH = os.path.abspath(os.path.dirname(__file__))
+VENV_PATH = os.path.join(CURRENT_PATH, 'venv')
+VENV_ACTIVATE_PATH = os.path.join(VENV_PATH, 'bin', 'activate')
+REQ_PATH = os.path.join(CURRENT_PATH, 'requirements.txt')
+
+
+@contextmanager
+def virtualenv():
+    if not os.path.exists(VENV_PATH):
+        local('virtualenv --no-site-packages {0}'.format(VENV_PATH))
+
+    with prefix('source {0}'.format(VENV_ACTIVATE_PATH)):
+        yield
+
+
+@task
+def install():
+    """
+    Creates a development virtualenv and pip installs requirements
+    """
+
+    with virtualenv():
+        local('pip install -r {0}'.format(REQ_PATH))
+
+
+@task
+def server():
+    """
+    Starts the development web server
+    """
+    app_path = os.path.join(CURRENT_PATH, 'application.py')
+
+    with virtualenv():
+        local('python {0}'.format(app_path))
