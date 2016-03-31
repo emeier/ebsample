@@ -22,3 +22,9 @@ Extras
 `fab eb_list` to show all Elastic Beanstalk environments
 `fab eb_terminate:<name>` to terminate an environment
 `fab eb_scale:<number>,name=<name>` to change the number of instances
+
+
+TODO
+----
+* Add healthcheck endpoint
+* Specify config for EB
