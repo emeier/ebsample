@@ -38,3 +38,40 @@ def server():
 
     with virtualenv():
         local('python {0}'.format(app_path))
+
+
+@task
+def eb_init(name, platform='python2.7'):
+    """
+    Creates an elastic beanstalk application.
+    """
+    with virtualenv():
+        local('eb init -p {0} {1}'.format(platform, name))
+
+
+@task
+def eb_create_env(name=None):
+    cmd = 'eb create'
+
+    if name is not None:
+        cmd += ' ' + name
+
+    local(cmd)
+
+
+@task
+def eb_list():
+    """
+    Lists all Elastic Beanstalk environments
+    """
+    with virtualenv():
+        local('eb list')
+
+
+@task
+def eb_deploy():
+    """
+    Deploys to an Elastic Beanstalk environment
+    """
+    with virtualenv():
+        local('eb deploy')
