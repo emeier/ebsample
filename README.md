@@ -21,4 +21,5 @@ Extras
 
 TODO
 ----
-* Specify config for EB
+* Specify config for EB env on creation
+* Blue/green deployment
