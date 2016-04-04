@@ -178,3 +178,14 @@ def config():
 
     with virtualenv():
         local(cmd)
+
+
+@task
+def health():
+    """
+    Shows detailed environment health
+    """
+    cmd = 'eb health {0}'.format(env.eb_env_name)
+
+    with virtualenv():
+        local(cmd)
