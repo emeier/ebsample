@@ -140,7 +140,7 @@ def eb_deploy(name):
     Deploys to an Elastic Beanstalk environment
     """
 
-    cmd = 'eb deploy {0} -v'.format(name)
+    cmd = 'eb deploy {0}'.format(name)
 
     with virtualenv():
         local(cmd)
@@ -164,6 +164,17 @@ def eb_scale(number, name=None):
 
     if name is not None:
         cmd += ' ' + name
+
+    with virtualenv():
+        local(cmd)
+
+
+@task
+def config():
+    """
+    Edits the Elastic Beanstalk environment configuration settings
+    """
+    cmd = 'eb config {0}'.format(env.eb_env_name)
 
     with virtualenv():
         local(cmd)
