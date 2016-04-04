@@ -8,14 +8,9 @@ Installation
 * Install fabric `pip install fabric`
 * Setup your virtualenv `fab install`
 
-Initial Deployment
-----------
-First, initialize the app `fab eb_init:app_name`
-Next, create the environment to begin deployment `fab eb_create_env`
-
-Deployments
+Deployment
 -----------
-Run `fab eb_deploy` to deploy to the active environment
+Run `fab <dev|prod> deploy` to deploy to the specified environment
 
 Extras
 ------
@@ -26,5 +21,4 @@ Extras
 
 TODO
 ----
-* Add healthcheck endpoint
 * Specify config for EB
