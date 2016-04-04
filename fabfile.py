@@ -29,6 +29,7 @@ def dev():
     """
     env.eb_env_name = APP_NAME + '-dev'
     env.eb_scale = 1
+    env.eb_instance_type = 't2.micro'
 
 
 @task
@@ -38,6 +39,7 @@ def prod():
     """
     env.eb_env_name = APP_NAME + '-prod'
     env.eb_scale = 2
+    env.eb_instance_type = 'm4.large'
 
 
 @task
@@ -73,7 +75,7 @@ def deploy():
         status = eb_status(env.eb_env_name)
 
     if status.failed:
-        eb_create(env.eb_env_name)
+        eb_create(env.eb_env_name, instance_type=env.eb_instance_type, scale=env.eb_scale)
     else:
         eb_deploy(env.eb_env_name)
 
@@ -96,7 +98,7 @@ def eb_init(name, platform='python2.7', region='us-west-2'):
 
 
 @task
-def eb_create(name, cname=None):
+def eb_create(name, cname=None, instance_type='t2.micro', scale=1):
     """
     Creates a new Elastic Beanstalk environment.
 
@@ -105,7 +107,9 @@ def eb_create(name, cname=None):
     if cname is None:
         cname = name
 
-    cmd = 'eb create {0} --cname {1}'.format(name, cname)
+    cmd = 'eb create {0} --cname {1} -i {2} --scale {3}'.format(
+        name, cname, instance_type, scale
+    )
 
     with virtualenv():
         local(cmd)
