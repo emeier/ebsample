@@ -44,6 +44,16 @@ Extras
 * `fab <environment> config` to modify the environment config
 * `fab eb_list` to show all Elastic Beanstalk environments
 
+Troubleshooting
+---------------
+```
+==> default: Notice: AWS Credentials are missing!!!
+==> default: Notice: /Stage[main]/Aws/Notify[AWS Credentials are missing!!!]/message:
+defined 'message' as 'AWS Credentials are missing!!!'
+```
+Add credentials according to the directions in 'Installation' and run `vagrant provision`
+
+
 TODO
 ----
 * Blue/green deployment strategy
