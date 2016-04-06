@@ -1,7 +1,7 @@
 Elastic Beanstalk Sample Deployment
 --------------
 
-> This is a sample project to deploy a Django app to Amazon Elastic Beanstalk using `Fabric` and `awsebcli`
+> This is a sample project to deploy a Django app to Amazon Elastic Beanstalk using [Fabric](http://www.fabfile.org/) and [awsebcli](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html)
 
 Prerequisites
 -------------
@@ -10,9 +10,8 @@ Prerequisites
 
 Installation
 ------------
-* Clone the repo `git clone <URL>`
-* cd to the repo `cd ebsample`
-* Run `vagrant up` ... get some coffee
+* Clone the repo `git clone https://github.com/emeier/ebsample.git`
+* Run `cd ebsample && vagrant up` ... get some coffee
 * SSH to VM `vagrant ssh`
 * Setup your virtualenv `cd /vagrant && fab install`
 
@@ -27,12 +26,17 @@ aws::aws_access_key_id: "ACCESS_KEY"
 aws::aws_secret_access_key: "SECRET_KEY"
 ```
 
-Run `fab <dev|prod> deploy` to deploy to the specified environment
+Run `fab <environment> deploy` to deploy to the specified environment
+
+Environments
+------------
+* `dev` is configured 1 `t2.micro` instance
+* `prod` is configured to deploy 2 `m4.large` instances
 
 Extras
 ------
 * `fab <environment> health` to show Elastic Beanstalk health
-* `fab <dev|prod> terminate` to terminate an environment
+* `fab <environment> terminate` to terminate an environment
 * `fab <environment> config` to modify the environment config
 * `fab eb_list` to show all Elastic Beanstalk environments
 
