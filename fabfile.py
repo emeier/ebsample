@@ -218,3 +218,14 @@ def health():
 
     with virtualenv():
         local(cmd)
+
+
+@task
+def logs():
+    """
+    Gets recent logs from Elastic Beanstalk
+    """
+    cmd = 'eb logs {0}'.format(env.eb_env_name)
+
+    with virtualenv():
+        local(cmd)
