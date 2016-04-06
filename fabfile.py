@@ -1,6 +1,7 @@
 import os
 
 from contextlib import contextmanager
+from distutils.util import strtobool
 
 from fabric.api import task, local, prefix, env, settings
 
@@ -44,10 +45,13 @@ def prod():
 
 
 @task
-def install():
+def install(clean='n'):
     """
     Creates a development virtualenv and pip installs requirements
     """
+    if strtobool(clean):
+        local('rm -rf {0}'.format(VENV_PATH))
+
     requirements = os.path.join(CURRENT_PATH, 'requirements.txt')
 
     with virtualenv():
