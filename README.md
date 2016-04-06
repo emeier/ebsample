@@ -13,13 +13,7 @@ Prerequisites
 Installation
 ------------
 * Clone the repo `git clone https://github.com/emeier/ebsample.git`
-* Run `cd ebsample && vagrant up` ... get some coffee
-* SSH to VM `vagrant ssh`
-* Setup your virtualenv `cd /vagrant && fab install`
-
-Deployment
------------
-Create a file with your AWS credentials at
+* Create a file with your AWS credentials at
 `puppet/environments/dev/hieradata/gitignore.yaml`
 
 ```
@@ -28,7 +22,15 @@ aws::aws_access_key_id: "ACCESS_KEY"
 aws::aws_secret_access_key: "SECRET_KEY"
 ```
 
-Run `fab <environment> deploy` to deploy to the specified environment
+* Run `cd ebsample && vagrant up` ... get some coffee
+* SSH to VM `vagrant ssh`
+* Setup your virtualenv `cd /vagrant && fab install`
+
+Deployment
+----------
+* `vagrant ssh`
+* `cd /vagrant`
+* Run `fab <environment> deploy` to deploy to the specified environment
 
 Environments
 ------------
