@@ -1,7 +1,9 @@
 Elastic Beanstalk Sample Deployment
 --------------
 
-> This is a sample project to deploy a Django app to Amazon Elastic Beanstalk using [Fabric](http://www.fabfile.org/) and [awsebcli](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html)
+This is a sample project to deploy a Django app to Amazon Elastic Beanstalk using [Fabric](http://www.fabfile.org/) and [awsebcli](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html)
+
+[Vagrant](https://www.vagrantup.com/) and [Puppet](https://puppetlabs.com/) are used ensure we can create a reproducible and portable environment.
 
 Prerequisites
 -------------
@@ -30,7 +32,7 @@ Run `fab <environment> deploy` to deploy to the specified environment
 
 Environments
 ------------
-* `dev` is configured 1 `t2.micro` instance
+* `dev` is configured to deploy 1 `t2.micro` instance
 * `prod` is configured to deploy 2 `m4.large` instances
 
 Extras
