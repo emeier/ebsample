@@ -77,7 +77,7 @@ def server(kind='django'):
     Starts the development web server
     """
     if kind == 'django':
-        app_path = os.path.join(CURRENT_PATH, 'djangoapp', 'manage.py')
+        app_path = os.path.join(CURRENT_PATH, 'manage.py')
         cmd = 'python {0} runserver 0.0.0.0:8000'.format(app_path)
     elif kind == 'flask':
         app_path = os.path.join(CURRENT_PATH, 'application.py')
@@ -203,7 +203,7 @@ def config():
     """
     Edits the Elastic Beanstalk environment configuration settings
     """
-    cmd = 'eb config {0}'.format(env.eb_env_name)
+    cmd = 'EDITOR=vim eb config {0}'.format(env.eb_env_name)
 
     with virtualenv():
         local(cmd)
