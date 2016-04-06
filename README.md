@@ -8,7 +8,7 @@ This is a sample project to deploy a Django app to Amazon Elastic Beanstalk usin
 Prerequisites
 -------------
 * Vagrant (tested with 1.8.1)
-* VirtualBox (tested with 4.3)
+* VirtualBox
 
 Installation
 ------------
