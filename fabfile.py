@@ -72,14 +72,21 @@ def freeze():
 
 
 @task
-def server():
+def server(kind='django'):
     """
     Starts the development web server
     """
-    app_path = os.path.join(CURRENT_PATH, 'application.py')
+    if kind == 'django':
+        app_path = os.path.join(CURRENT_PATH, 'djangoapp', 'manage.py')
+        cmd = 'python {0} runserver 0.0.0.0:8000'.format(app_path)
+    elif kind == 'flask':
+        app_path = os.path.join(CURRENT_PATH, 'application.py')
+        cmd = 'python {0}'.format(app_path)
+    else:
+        raise Exception('Invalid kind [{0}]'.format(kind))
 
     with virtualenv():
-        local('python {0}'.format(app_path))
+        local(cmd)
 
 
 @task

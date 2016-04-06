@@ -23,6 +23,11 @@ class defaultnode {
         ensure => 'stopped'
     }
 
+    service { 'firewalld':
+        enable      => false,
+        ensure      => stopped,
+    }
+
     file { '/etc/localtime':
        ensure => 'link',
        target => '/usr/share/zoneinfo/America/Chicago',
