@@ -7,13 +7,17 @@ class aws(
 ) {
     $aws_dir = '/home/vagrant/.aws'
 
-    file { $aws_dir:
-        ensure => directory,
-    }
+    if $aws_access_key_id {
+        file { $aws_dir:
+            ensure => directory,
+        }
 
-    file { "${aws_dir}/credentials":
-        ensure  => file,
-        content => template('aws/credentials.erb'),
-        require => File[$aws_dir],
+        file { "${aws_dir}/credentials":
+            ensure  => file,
+            content => template('aws/credentials.erb'),
+            require => File[$aws_dir],
+        }
+    } else {
+        notify {'AWS Credentials are missing!!!':}
     }
 }
