@@ -9,7 +9,8 @@ APP_DESCRIPTION = """
 A sample application for use with Elastic Beanstalk
 """
 CURRENT_PATH = os.path.abspath(os.path.dirname(__file__))
-VENV_PATH = os.path.join(CURRENT_PATH, 'venv')
+USER_HOME = os.path.expanduser('~')
+VENV_PATH = os.path.join(USER_HOME, 'venv')
 
 
 @contextmanager
@@ -50,6 +51,8 @@ def install():
     requirements = os.path.join(CURRENT_PATH, 'requirements.txt')
 
     with virtualenv():
+        local('pip install -U setuptools==20.6.7')
+        local('pip install -U pip==8.1.1')
         local('pip install -r {0}'.format(requirements))
 
 
