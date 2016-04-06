@@ -1,25 +1,42 @@
 SG DevOps Task
 --------------
 
-> Publish a sample on github that lets me install a simple django app (on ElasticBeanstalk if you know how) without RDS on AWS using an ELB
+> Publish a sample on github that lets me install a simple django app
+> (on ElasticBeanstalk if you know how) without RDS on AWS using an ELB
+
+Prerequisites
+-------------
+* Vagrant (tested with 1.8.1)
+* VirtualBox (tested with 4.3)
 
 Installation
 ------------
-* Install fabric `pip install fabric`
-* Setup your virtualenv `fab install`
+* Clone the repo `git clone <URL>`
+* cd to the repo `cd sgdevops`
+* Run `vagrant up` ... get some coffee
+* SSH to VM `vagrant ssh`
+* Setup your virtualenv `cd /vagrant && fab install`
 
 Deployment
 -----------
+Create a file with your AWS credentials at
+`puppet/environments/dev/hieradata/gitignore.yaml`
+
+```
+---
+aws::aws_access_key_id: "ACCESS_KEY"
+aws::aws_secret_access_key: "SECRET_KEY"
+```
+
 Run `fab <dev|prod> deploy` to deploy to the specified environment
 
 Extras
 ------
-`fab eb_list` to show all Elastic Beanstalk environments
-`fab eb_terminate:<name>` to terminate an environment
-`fab eb_scale:<number>,name=<name>` to change the number of instances
-
+* `fab <environment> health` to show Elastic Beanstalk health
+* `fab <dev|prod> terminate` to terminate an environment
+* `fab <environment> config` to modify the environment config
+* `fab eb_list` to show all Elastic Beanstalk environments
 
 TODO
 ----
-* Specify config for EB env on creation
-* Blue/green deployment
+* Blue/green deployment strategy
