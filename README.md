@@ -1,8 +1,7 @@
-SG DevOps Task
+Elastic Beanstalk Sample Deployment
 --------------
 
-> Publish a sample on github that lets me install a simple django app
-> (on ElasticBeanstalk if you know how) without RDS on AWS using an ELB
+> This is a sample project to deploy a Django app to Amazon Elastic Beanstalk using `Fabric` and `awsebcli`
 
 Prerequisites
 -------------
