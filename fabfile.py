@@ -61,6 +61,17 @@ def install(clean='n'):
 
 
 @task
+def freeze():
+    """
+    Freezes pip requirements file
+    """
+    requirements = os.path.join(CURRENT_PATH, 'requirements.txt')
+
+    with virtualenv():
+        local('pip freeze > {0}'.format(requirements))
+
+
+@task
 def server():
     """
     Starts the development web server
