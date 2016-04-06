@@ -12,7 +12,7 @@ Prerequisites
 Installation
 ------------
 * Clone the repo `git clone <URL>`
-* cd to the repo `cd sgdevops`
+* cd to the repo `cd ebsample`
 * Run `vagrant up` ... get some coffee
 * SSH to VM `vagrant ssh`
 * Setup your virtualenv `cd /vagrant && fab install`

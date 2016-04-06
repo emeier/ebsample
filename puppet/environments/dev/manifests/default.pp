@@ -18,23 +18,16 @@ class { 'epel':
 }
 
 class defaultnode {
-    service { 'iptables':
-        enable => false,
-        ensure => 'stopped'
-    }
-
     service { 'firewalld':
         enable      => false,
         ensure      => stopped,
     }
-
-    file { '/etc/localtime':
-       ensure => 'link',
-       target => '/usr/share/zoneinfo/America/Chicago',
-    }
 }
 
-include defaultnode
-include python
-include git
-include aws
+node default {
+    include defaultnode
+    include python
+    include git
+    include aws
+    include vim
+}

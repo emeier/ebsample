@@ -5,7 +5,7 @@ from distutils.util import strtobool
 
 from fabric.api import task, local, prefix, env, settings
 
-APP_NAME = 'sgdevops'
+APP_NAME = 'ebsample'
 APP_DESCRIPTION = """
 A sample application for use with Elastic Beanstalk
 """

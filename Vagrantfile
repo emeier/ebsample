@@ -5,7 +5,7 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "puppetlabs/centos-7.2-64-puppet"
   config.vm.box_version = "1.0.1"
-  config.vm.hostname = "sgdevops"
+  config.vm.hostname = "ebsample"
 
 
   config.vm.network "private_network", ip: "10.10.10.10"
