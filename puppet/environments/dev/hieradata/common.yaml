@@ -1,0 +1,4 @@
+---
+
+aws::aws_access_key_id: "don't do it here"
+aws::aws_secret_access_key: "put me in the gitignore.yaml"

@@ -5,6 +5,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "puppetlabs/centos-7.2-64-puppet"
   config.vm.box_version = "1.0.1"
+  config.vm.hostname = "sgdevops"
+
 
   config.vm.network "private_network", ip: "10.10.10.10"
 
@@ -22,6 +24,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision "puppet" do |puppet|
     puppet.environment_path = "puppet/environments"
     puppet.environment = "dev"
+    puppet.hiera_config_path = "puppet/hiera.yaml"
+    puppet.working_directory = "/tmp/vagrant-puppet"
     puppet.options = "--verbose"
   end
 end

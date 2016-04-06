@@ -30,3 +30,6 @@ class defaultnode {
 }
 
 include defaultnode
+include python
+include git
+include aws
